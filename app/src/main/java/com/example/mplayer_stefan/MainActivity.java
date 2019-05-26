@@ -21,10 +21,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(mediaPlayer==null)
-        mediaPlayer=MediaPlayer.create(getApplicationContext(),R.raw.roundabout);
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-       // startService(new Intent(MainActivity.this,myservice.class));
+
+        startService(new Intent(MainActivity.this, myservice.class));
+
+       mediaPlayer=MediaPlayer.create(this,R.raw.roundabout);
+       mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
     handler=new Handler();
 
     seekBar=(SeekBar)findViewById(R.id.seekBar2);
@@ -92,17 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mediaPlayer.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mediaPlayer.pause();
-    }
 
     @Override
     protected void onDestroy() {
