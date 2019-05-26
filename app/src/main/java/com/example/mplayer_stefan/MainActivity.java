@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if(mediaPlayer==null)
         mediaPlayer=MediaPlayer.create(getApplicationContext(),R.raw.roundabout);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        startService(new Intent(MainActivity.this,myservice.class));
+       // startService(new Intent(MainActivity.this,myservice.class));
     handler=new Handler();
 
     seekBar=(SeekBar)findViewById(R.id.seekBar2);
